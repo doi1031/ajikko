@@ -9,9 +9,16 @@ https://docs.google.com/document/d/1ZoAu9aipLs5spMktOP84L3eMzJysr7wQIscgffQbH2Q/
 $ git clone git@github.com:doi1031/ajikko.git
 $ cd ajikko
 $ cp .env.example .env
-$ composer install
-$ composer key:generate
+$ docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php81-composer:latest \
+    composer install --ignore-platform-reqs
 $ ./vendor/bin/sail up
+$ ./vendor/bin/sail composer key:generate
+$ ./vendor/bin/sail npm install
+$ ./vendor/bin/sail npm run dev
 $ sudo vim /etc/hosts
 ```
 
