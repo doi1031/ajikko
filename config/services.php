@@ -31,4 +31,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'rakuten_developers' => [
+        'application_id' => env('RAKUTEN_APPLICATION_ID'),
+        'application_secret' => env('RAKUTEN_APPLICATION_SECRET'),
+        'affiliate_id' => env('RAKUTEN_AFFILIATE_ID'),
+    ],
+
 ];
