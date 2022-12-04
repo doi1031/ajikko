@@ -1,6 +1,6 @@
 @extends('components.layout')
 
-@section('title', $name)
+@section('title', $recipe->title)
 
 @section('content')
     <!-- Product -->
@@ -8,7 +8,7 @@
         <!-- Product image -->
         <div class="lg:col-span-4 lg:row-end-1">
             <div class="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg bg-gray-100">
-                <img src="{{ $thumb }}" alt="Sample of 30 icons with friendly and fun details in outline, filled, and brand color styles." class="object-cover object-center">
+                <img src="{{ $recipe->food_image_url }}" alt="{{ $recipe->title }}" class="object-cover object-center">
             </div>
         </div>
 
@@ -16,10 +16,10 @@
         <div class="mx-auto mt-14 max-w-2xl sm:mt-16 lg:col-span-3 lg:row-span-2 lg:row-end-2 lg:mt-0 lg:max-w-none">
             <div class="flex flex-col-reverse">
                 <div class="mt-4">
-                    <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{{ $name }}</h1>
+                    <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{{ $recipe->title }}</h1>
 
                     <h2 id="information-heading" class="sr-only">Product information</h2>
-                    <p class="mt-2 text-sm text-gray-500">Version 1.0 (Updated <time datetime="2021-06-05">June 5, 2021</time>)</p>
+                    <p class="mt-2 text-sm text-gray-500">公開日：<time datetime="{{ $recipe->publishday }}">{{ $recipe->publishday }}</time></p>
                 </div>
 
                 <div>
@@ -58,22 +58,20 @@
                 </div>
             </div>
 
-            <p class="mt-6 text-gray-500">{{ $description }}</p>
+            <p class="mt-6 text-gray-500">{{ $recipe->description }}</p>
 
             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
-                <button type="button" class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">Pay $220</button>
+                <a target="_blank" href="{{ $recipe->url }}"><button type="button" class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">楽天レシピ</button></a>
                 <button type="button" class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-50 py-3 px-8 text-base font-medium text-indigo-700 hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">Preview</button>
             </div>
 
             <div class="mt-10 border-t border-gray-200 pt-10">
-                <h3 class="text-sm font-medium text-gray-900">Highlights</h3>
+                <h3 class="text-sm font-medium text-gray-900">材料</h3>
                 <div class="prose prose-sm mt-4 text-gray-500">
                     <ul role="list">
-                        <li>200+ SVG icons in 3 unique styles</li>
-
-                        <li>Compatible with Figma, Sketch, and Adobe XD</li>
-
-                        <li>Drawn on 24 x 24 pixel grid</li>
+                        @foreach($recipe->material as $material)
+                            <li>{{ $material }}</li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -120,8 +118,6 @@
                     <div class="-mb-px flex space-x-8" aria-orientation="horizontal" role="tablist">
                         <!-- Selected: "border-indigo-600 text-indigo-600", Not Selected: "border-transparent text-gray-700 hover:text-gray-800 hover:border-gray-300" -->
                         <button id="tab-reviews" class="border-transparent text-gray-700 hover:text-gray-800 hover:border-gray-300 whitespace-nowrap border-b-2 py-6 text-sm font-medium" aria-controls="tab-panel-reviews" role="tab" type="button">Customer Reviews</button>
-                        <button id="tab-faq" class="border-transparent text-gray-700 hover:text-gray-800 hover:border-gray-300 whitespace-nowrap border-b-2 py-6 text-sm font-medium" aria-controls="tab-panel-faq" role="tab" type="button">FAQ</button>
-                        <button id="tab-license" class="border-transparent text-gray-700 hover:text-gray-800 hover:border-gray-300 whitespace-nowrap border-b-2 py-6 text-sm font-medium" aria-controls="tab-panel-license" role="tab" type="button">License</button>
                     </div>
                 </div>
 
@@ -224,54 +220,6 @@
                     <!-- More reviews... -->
                 </div>
 
-                <!-- 'FAQ' panel, show/hide based on tab state -->
-                <div id="tab-panel-faq" class="text-sm text-gray-500" aria-labelledby="tab-faq" role="tabpanel" tabindex="0">
-                    <h3 class="sr-only">Frequently Asked Questions</h3>
-
-                    <dl>
-                        <dt class="mt-10 font-medium text-gray-900">What format are these icons?</dt>
-                        <dd class="prose prose-sm mt-2 max-w-none text-gray-500">
-                            <p>The icons are in SVG (Scalable Vector Graphic) format. They can be imported into your design tool of choice and used directly in code.</p>
-                        </dd>
-
-                        <dt class="mt-10 font-medium text-gray-900">Can I use the icons at different sizes?</dt>
-                        <dd class="prose prose-sm mt-2 max-w-none text-gray-500">
-                            <p>Yes. The icons are drawn on a 24 x 24 pixel grid, but the icons can be scaled to different sizes as needed. We don&#039;t recommend going smaller than 20 x 20 or larger than 64 x 64 to retain legibility and visual balance.</p>
-                        </dd>
-
-                        <!-- More FAQs... -->
-                    </dl>
-                </div>
-
-                <!-- 'License' panel, show/hide based on tab state -->
-                <div id="tab-panel-license" class="pt-10" aria-labelledby="tab-license" role="tabpanel" tabindex="0">
-                    <h3 class="sr-only">License</h3>
-
-                    <div class="prose prose-sm max-w-none text-gray-500">
-                        <h4>Overview</h4>
-
-                        <p>For personal and professional use. You cannot resell or redistribute these icons in their original or modified state.</p>
-
-                        <ul role="list">
-                            <li>You're allowed to use the icons in unlimited projects.</li>
-                            <li>Attribution is not required to use the icons.</li>
-                        </ul>
-
-                        <h4>What you can do with it</h4>
-
-                        <ul role="list">
-                            <li>Use them freely in your personal and professional work.</li>
-                            <li>Make them your own. Change the colors to suit your project or brand.</li>
-                        </ul>
-
-                        <h4>What you can't do with it</h4>
-
-                        <ul role="list">
-                            <li>Don't be greedy. Selling or distributing these icons in their original or modified state is prohibited.</li>
-                            <li>Don't be evil. These icons cannot be used on websites or applications that promote illegal or immoral beliefs or activities.</li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -279,31 +227,33 @@
     <!-- Related products -->
     <div class="mx-auto mt-24 max-w-2xl sm:mt-32 lg:max-w-none">
         <div class="flex items-center justify-between space-x-4">
-            <h2 class="text-lg font-medium text-gray-900">Customers also viewed</h2>
-            <a href="#" class="whitespace-nowrap text-sm font-medium text-indigo-600 hover:text-indigo-500">
+            <h2 class="text-lg font-medium text-gray-900">Related recipes</h2>
+            <a href="{{ route('recipes-index') }}" class="whitespace-nowrap text-sm font-medium text-indigo-600 hover:text-indigo-500">
                 View all
                 <span aria-hidden="true"> &rarr;</span>
             </a>
         </div>
         <div class="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
+            @foreach($relatedRecipes as $recipe)
             <div class="group relative">
                 <div class="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg bg-gray-100">
-                    <img src="https://tailwindui.com/img/ecommerce-images/product-page-05-related-product-01.jpg" alt="Payment application dashboard screenshot with transaction table, financial highlights, and main clients on colorful purple background." class="object-cover object-center">
+                    <img src="{{ $recipe->food_image_url }}" alt="{{ $recipe->title }}" class="object-cover object-center">
                     <div class="flex items-end p-4 opacity-0 group-hover:opacity-100" aria-hidden="true">
-                        <div class="w-full rounded-md bg-white bg-opacity-75 py-2 px-4 text-center text-sm font-medium text-gray-900 backdrop-blur backdrop-filter">View Product</div>
+                        <div class="w-full rounded-md bg-white bg-opacity-75 py-2 px-4 text-center text-sm font-medium text-gray-900 backdrop-blur backdrop-filter">View Recipe</div>
                     </div>
                 </div>
                 <div class="mt-4 flex items-center justify-between space-x-8 text-base font-medium text-gray-900">
                     <h3>
-                        <a href="#">
+                        <a href="{{ route('recipes-show', ['id' => $recipe->id]) }}">
                             <span aria-hidden="true" class="absolute inset-0"></span>
-                            Fusion
+                            {{ $recipe->title }}
                         </a>
                     </h3>
-                    <p>$49</p>
+{{--                    <p>$49</p>--}}
                 </div>
-                <p class="mt-1 text-sm text-gray-500">UI Kit</p>
+{{--                <p class="mt-1 text-sm text-gray-500">UI Kit</p>--}}
             </div>
+            @endforeach
 
             <!-- More products... -->
         </div>

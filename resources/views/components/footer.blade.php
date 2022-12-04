@@ -96,7 +96,7 @@
         </div>
 
         <div class="border-t border-gray-200 py-10 text-center">
-            <p class="text-sm text-gray-500">&copy; 2021 Your Company, Inc.</p>
+            <p class="text-sm text-gray-500">&copy; 2021 {{ config('app.name') }}, Inc.</p>
         </div>
     </div>
 </footer>
