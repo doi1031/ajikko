@@ -16,7 +16,7 @@ $ docker run --rm \
     laravelsail/php81-composer:latest \
     composer install --ignore-platform-reqs
 $ ./vendor/bin/sail up
-$ ./vendor/bin/sail composer key:generate
+$ ./vendor/bin/sail artisan key:generate
 $ ./vendor/bin/sail npm install
 $ ./vendor/bin/sail npm run dev
 $ sudo vim /etc/hosts
