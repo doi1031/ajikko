@@ -134,26 +134,26 @@
                 @foreach($recipes as $recipe)
                     <div class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white">
                         <div class="aspect-w-3 aspect-h-4 bg-gray-200 group-hover:opacity-75 sm:aspect-none sm:h-46">
-                            <img src="{{ $recipe->food_image_url }}">
+                            <img src="{{ $recipe->foodImageUrl }}">
                         </div>
                         <div class="flex flex-1 flex-col space-y-2 p-4">
                             <h3 class="text-sm font-medium text-gray-900">
                                 <a href="{{ route('recipes-show', ['id' => $recipe->id]) }}">
                                     <span aria-hidden="true" class="absolute inset-0"></span>
-                                    {{ $recipe->name }}
+                                    {{ $recipe->title }}
                                 </a>
                             </h3>
                             <p class="text-sm text-gray-500">{{ $recipe->description }}</p>
                             <div class="flex flex-1 flex-col justify-end">
-                                <p class="text-sm italic text-gray-500">8 colors</p>
-                                <p class="text-base font-medium text-gray-900">$256</p>
+{{--                                <p class="text-sm italic text-gray-500">8 colors</p>--}}
+                                <p class="text-base font-medium text-gray-900">{{ $recipe->calorie() }}kcal</p>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
 
-            {{ $recipes->links('vendor/pagination/tailwind') }}
+{{--            {{ $recipes->links('vendor/pagination/tailwind') }}--}}
 
         </section>
     </div>

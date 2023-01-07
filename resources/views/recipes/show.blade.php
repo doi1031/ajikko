@@ -8,7 +8,7 @@
         <!-- Product image -->
         <div class="lg:col-span-4 lg:row-end-1">
             <div class="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg bg-gray-100">
-                <img src="{{ $recipe->food_image_url }}" alt="{{ $recipe->title }}" class="object-cover object-center">
+                <img src="{{ $recipe->foodImageUrl }}" alt="{{ $recipe->title }}" class="object-cover object-center">
             </div>
         </div>
 
@@ -19,7 +19,7 @@
                     <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{{ $recipe->title }}</h1>
 
                     <h2 id="information-heading" class="sr-only">Product information</h2>
-                    <p class="mt-2 text-sm text-gray-500">公開日：<time datetime="{{ $recipe->publishday }}">{{ $recipe->publishday }}</time></p>
+                    <p class="mt-2 text-sm text-gray-500">更新日：<time datetime="{{ $recipe->updatedAt }}">{{ $recipe->updatedAt }}</time></p>
                 </div>
 
                 <div>
@@ -58,10 +58,27 @@
                 </div>
             </div>
 
+            <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
+                <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+                    <dt class="truncate text-sm font-medium text-gray-500">Calorie</dt>
+                    <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{{ $recipe->calorie() }}</dd>
+                </div>
+
+                <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+                    <dt class="truncate text-sm font-medium text-gray-500">Salt</dt>
+                    <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{{ $recipe->salt() }}</dd>
+                </div>
+
+                <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+                    <dt class="truncate text-sm font-medium text-gray-500">-</dt>
+                    <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">-</dd>
+                </div>
+            </dl>
+
             <p class="mt-6 text-gray-500">{{ $recipe->description }}</p>
 
             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
-                <a target="_blank" href="{{ $recipe->url }}"><button type="button" class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">楽天レシピ</button></a>
+                <a target="_blank" href="{{ $recipe->sourceUrl }}"><button type="button" class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">楽天レシピ</button></a>
                 <button type="button" class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-50 py-3 px-8 text-base font-medium text-indigo-700 hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">Preview</button>
             </div>
 
@@ -69,8 +86,8 @@
                 <h3 class="text-sm font-medium text-gray-900">材料</h3>
                 <div class="prose prose-sm mt-4 text-gray-500">
                     <ul role="list">
-                        @foreach($recipe->material as $material)
-                            <li>{{ $material }}</li>
+                        @foreach($recipe->eiyos as $eiyo)
+                            <li>{{ $eiyo->name }} {{ $eiyo->calorie() }}kcal</li>
                         @endforeach
                     </ul>
                 </div>
@@ -237,7 +254,7 @@
             @foreach($relatedRecipes as $recipe)
             <div class="group relative">
                 <div class="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg bg-gray-100">
-                    <img src="{{ $recipe->food_image_url }}" alt="{{ $recipe->title }}" class="object-cover object-center">
+                    <img src="{{ $recipe->foodImageUrl }}" alt="{{ $recipe->title }}" class="object-cover object-center">
                     <div class="flex items-end p-4 opacity-0 group-hover:opacity-100" aria-hidden="true">
                         <div class="w-full rounded-md bg-white bg-opacity-75 py-2 px-4 text-center text-sm font-medium text-gray-900 backdrop-blur backdrop-filter">View Recipe</div>
                     </div>
@@ -249,7 +266,7 @@
                             {{ $recipe->title }}
                         </a>
                     </h3>
-{{--                    <p>$49</p>--}}
+                    <p>{{ $recipe->calorie() }}kcal</p>
                 </div>
 {{--                <p class="mt-1 text-sm text-gray-500">UI Kit</p>--}}
             </div>
