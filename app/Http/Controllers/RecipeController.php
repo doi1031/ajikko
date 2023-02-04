@@ -69,6 +69,7 @@ class RecipeController extends Controller
             'source_url' => $content['motoneta_url'],
             'food_image_url' => '',
             'small_image_url' => '',
+            'medium_image_url' => '',
         ];
         AjikkoRecipe::create($data);
     }
