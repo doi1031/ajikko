@@ -5,21 +5,21 @@
 
     <label>
         レシピ名
-        <input type="text" placeholder="レシピ名を入れる" />
+        <input name="recipe_title" type="text" placeholder="レシピ名を入れる" />
     </label>
 
     <br>
 
     <label>
         元ネタURL
-        <input type="url" placeholder="元ネタあればURL貼る" />
+        <input name="motoneta_url" type="url" placeholder="元ネタあればURL貼る" />
     </label>
 
     <br>
 
     <label>
         写真
-        <input type="file" />
+        <input name="photo" type="file" />
     </label>
 
     <br>
@@ -27,7 +27,7 @@
     <label>
         どんな料理か
         <br>
-        <textarea style="width: 300px; height: 100px"></textarea>
+        <textarea name="description_text" style="width: 300px; height: 100px"></textarea>
     </label>
 
     <br>
