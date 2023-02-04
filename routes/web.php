@@ -19,6 +19,9 @@ Route::get('/', function () {
 });
 
 Route::controller(RecipeController::class)->group(function () {
+    Route::get('/recipes/input_form', 'create')->name('recipes-create');
+    Route::post('/recipes/store', 'store')->name('recipes-store');
     Route::get('/recipes', 'index')->name('recipes-index');
     Route::get('/recipes/{id}', 'show')->name('recipes-show');
 });
+

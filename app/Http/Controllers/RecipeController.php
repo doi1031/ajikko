@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Eiyo;
 use App\Models\AjikkoRecipe;
 
 class RecipeController extends Controller
@@ -13,7 +13,9 @@ class RecipeController extends Controller
             return $ajikkoRecipe->toDomain();
         });
         $params = [
+
             'recipes' => $recipes,
+            'recipes' =>AjikkoRecipe::query()->paginate(30)
         ];
         return view('recipes/index', $params);
     }
@@ -35,4 +37,33 @@ class RecipeController extends Controller
         ];
         return view('recipes/show', $params);
     }
+    
+    /**
+     * 登録フォーム表示するとこ
+     * @return void
+     */
+    public function create()   
+    {
+        // 日常的に使う食材に検索対象を限定しておく処理
+        $targetIds = [2478,2674,3840,2992,];
+
+        $eiyos = Eiyo::query()
+            ->whereIn( 'id', $targetIds)
+            ->get();
+        $params = [
+            'eiyos' => $eiyos,
+        ];  
+        return view('recipes.form' ,$params);
+    }
+   
+    /**
+     * 登録フォームから送信したレシピデータを保存する処理を置くとこ
+     * @return void
+     */
+    public function store()
+    {
+        $content = request()->input();
+        dd($content);
+    }
+
 }
