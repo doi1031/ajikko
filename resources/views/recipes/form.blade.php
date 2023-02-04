@@ -7,23 +7,23 @@
         レシピ名
         <input type="text" placeholder="レシピ名を入れる" />
     </label>
-    
+
     <br>
 
     <label>
         元ネタURL
         <input type="url" placeholder="元ネタあればURL貼る" />
     </label>
-    
+
     <br>
-    
+
     <label>
         写真
         <input type="file" />
     </label>
-    
+
     <br>
-    
+
     <label>
         どんな料理か
         <br>
@@ -35,7 +35,7 @@
 
     @for ($i = 0; $i < 15; $i++)
       <label for="food{{ $i }}">食材:</label>
-      <select class="food" name="food{{ $i }}">
+      <select class="food" name="food[{{ $i }}][id]">
       <option value=""></option>
        @foreach($eiyos as $eiyo)
         <option value="{{ $eiyo->id }}">{{ $eiyo->food_name }}</option>
@@ -43,9 +43,9 @@
       </select>
 
       <label for="volume{{ $i }}">分量（g）:</label>
-      <input type="text" class="volume" name="volume{{ $i }}">
+      <input type="text" class="volume" name="food[{{ $i }}][volume]">
       <br>
-    @endfor 
+    @endfor
 
     <br>
 
