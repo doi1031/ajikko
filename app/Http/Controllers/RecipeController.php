@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AjikkoRecipeEiyo;
 use App\Models\Eiyo;
 use App\Models\AjikkoRecipe;
 
@@ -13,9 +14,7 @@ class RecipeController extends Controller
             return $ajikkoRecipe->toDomain();
         });
         $params = [
-
             'recipes' => $recipes,
-            'recipes' =>AjikkoRecipe::query()->paginate(30)
         ];
         return view('recipes/index', $params);
     }
@@ -71,7 +70,18 @@ class RecipeController extends Controller
             'small_image_url' => '',
             'medium_image_url' => '',
         ];
-        AjikkoRecipe::create($data);
+        /** @var AjikkoRecipe $ajikkoRecipe */
+        $ajikkoRecipe = AjikkoRecipe::create($data);
+        foreach ($content['food'] as $food) {
+            if ($food['id']) {
+                $data = [
+                    'ajikko_recipe_id' => $ajikkoRecipe->id,
+                    'eiyo_id' => $food['id'],
+                    'volume' => $food['volume'],
+                ];
+                AjikkoRecipeEiyo::create($data);
+            }
+        }
     }
 
 }

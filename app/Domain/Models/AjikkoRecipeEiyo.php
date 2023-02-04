@@ -19,6 +19,7 @@ class AjikkoRecipeEiyo
 
     public function salt()
     {
+        return 0;
         return $this->naclEq * ($this->volume / 100);
     }
 
