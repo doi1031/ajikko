@@ -65,6 +65,7 @@ class RecipeController extends Controller
         $data = [
             'title' => $content['recipe_title'],
             'description' => $content['description_text'],
+            'how_many' => $content['how_many'],
             'source_url' => $content['motoneta_url'],
             'food_image_url' => '',
             'small_image_url' => '',
