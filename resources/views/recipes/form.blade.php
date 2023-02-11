@@ -1,3 +1,53 @@
+<style>
+    form {
+        width: 60%;
+        margin: auto;
+        padding: 30px;
+        background-color: #f2f2f2;
+        border-radius: 10px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    label {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    input[type="text"], input[type="url"], textarea, select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    input[type="file"] {
+        padding: 12px 20px;
+        margin: 8px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        width: 100%;
+        padding: 14px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #3e8e41;
+    }
+</style>
+
 <h1>レシピ登録フォーム</h1>
 
 <form id="myForm" action="/recipes/store" method='POST'>
@@ -34,16 +84,18 @@
     <br>
 
     @for ($i = 0; $i < 15; $i++)
-      <label for="food{{ $i }}">食材:</label>
-      <select class="food" name="food[{{ $i }}][id]">
-      <option value=""></option>
-       @foreach($eiyos as $eiyo)
-        <option value="{{ $eiyo->id }}">{{ $eiyo->food_name }}</option>
-       @endforeach
-      </select>
+      <div style="display: flex; align-items: center;">
+        <label for="food{{ $i }}">食材:</label>
+        <select class="food" name="food[{{ $i }}][id]">
+        <option value=""></option>
+         @foreach($eiyos as $eiyo)
+          <option value="{{ $eiyo->id }}">{{ $eiyo->food_name }}</option>
+         @endforeach
+        </select>
 
-      <label for="volume{{ $i }}">分量（g）:</label>
-      <input type="text" class="volume" name="food[{{ $i }}][volume]">
+        <label for="volume{{ $i }}">分量（g）:</label>
+        <input type="text" class="volume" name="food[{{ $i }}][volume]">
+      </div>
       <br>
     @endfor
 
@@ -54,50 +106,4 @@
 </form>
 
 
-<script>
-
-    function addFields() {
-  // Get the current number of fields
-  var currentCount = document.getElementsByName("name").length;
-
-  // Create new elements
-  var fields = [
-    {
-      labelName: "食材",
-      type: "text",
-      name: "food",
-      id: "food" + (currentCount + 1),
-      placeholder: "",
-    },
-    {
-      labelName: "分量（g）",
-      type: "text",
-      name: "volume",
-      id: "volume" + (currentCount + 1),
-      placeholder: "",
-    }
-  ];
-
-  // Append new elements to the form
-  var form = document.getElementById("myForm");
-  fields.forEach(field => {
-    var newLabel = document.createElement("label");
-    newLabel.innerText = field.labelName
-    var newField = document.createElement("input");
-    newField.type = field.type;
-    newField.name = field.name;
-    newField.id = field.id;
-    newField.placeholder = field.placeholder;
-    form.appendChild(newLabel);
-    form.appendChild(newField);
-  });
-  form.appendChild(document.createElement("br"));
-}
-</script>
-
-
-{{--
-@foreach($posts as $post)
-    <p>{{ $post->id }} {{ $post->content }} {{ $post->created_at }}</p>
-@endforeach
---}}
+   
