@@ -8,7 +8,7 @@
         <!-- Product image -->
         <div class="lg:col-span-4 lg:row-end-1">
             <div class="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg bg-gray-100">
-                <img src="{{ $recipe->foodImageUrl }}" alt="{{ $recipe->title }}" class="object-cover object-center">
+            <img src="{{ asset($recipe->foodImageUrl) }}" alt="{{ $recipe->title }}" class="object-cover object-center">
             </div>
         </div>
 

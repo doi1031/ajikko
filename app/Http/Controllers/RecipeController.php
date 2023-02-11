@@ -61,13 +61,14 @@ class RecipeController extends Controller
      */
     public function store()
     {
+        $fileName = request()->file('photo')->store('images');
         $content = request()->input();
         $data = [
             'title' => $content['recipe_title'],
             'description' => $content['description_text'],
             'how_many' => $content['how_many'],
             'source_url' => $content['motoneta_url'],
-            'food_image_url' => '',
+            'food_image_url' => $fileName,
             'small_image_url' => '',
             'medium_image_url' => '',
         ];

@@ -50,7 +50,7 @@
 
 <h1>レシピ登録フォーム</h1>
 
-<form id="myForm" action="/recipes/store" method='POST'>
+<form id="myForm" action="/recipes/store" method='POST' enctype="multipart/form-data">
     {{ csrf_field() }}
 
     <label>
