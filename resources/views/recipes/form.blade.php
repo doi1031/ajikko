@@ -81,6 +81,25 @@
     </label>
 
     <br>
+
+    <label>
+        何食分（何人分）か
+        <br>
+        <select name="how_many">
+          <option value="1">1</option>
+          <option value="1.5">1.5</option>
+          <option value="2">2</option>
+          <option value="2.5">2.5</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="8">8</option>
+          <option value="10">10</option>
+        </select>
+    </label>
+
+    <br>
     <br>
 
     @for ($i = 0; $i < 15; $i++)
