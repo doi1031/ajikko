@@ -63,27 +63,27 @@
 
                 <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
                     <dt class="truncate text-sm font-medium text-gray-500">P</dt>
-                    <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">-</dd>
+                    <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{{ $recipe->prot() / $recipe->howMany() }}</dd>
                 </div>
 
                 <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
                     <dt class="truncate text-sm font-medium text-gray-500">F</dt>
-                    <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">-</dd>
+                    <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{{ $recipe->fat() / $recipe->howMany() }}</dd>
                 </div>
 
                 <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
                     <dt class="truncate text-sm font-medium text-gray-500">C</dt>
-                    <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">-</dd>
+                    <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{{ $recipe->carbo() / $recipe->howMany() }}</dd>
                 </div>
 
                 <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
                     <dt class="truncate text-sm font-medium text-gray-500">kcal</dt>
-                    <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{{ $recipe->calorie() }}</dd>
+                    <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{{ $recipe->calorie() / $recipe->howMany()  }}</dd>
                 </div>
 
                 <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
                     <dt class="truncate text-sm font-medium text-gray-500">塩分</dt>
-                    <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{{ $recipe->salt() }}</dd>
+                    <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{{ $recipe->salt() / $recipe->howMany()  }}</dd>
                 </div>
 
             </dl>
