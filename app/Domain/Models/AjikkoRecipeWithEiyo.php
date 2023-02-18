@@ -12,6 +12,7 @@ class AjikkoRecipeWithEiyo
         public string $title,
         public string $description,
         public string $sourceUrl,
+        public float $howMany,
         public string $foodImageUrl,
         public string $mediumImageUrl,
         public string $smallImageUrl,
@@ -19,6 +20,11 @@ class AjikkoRecipeWithEiyo
         public string $updatedAt,
         public Collection $eiyos,
     ) {}
+
+    public function howMany():float
+    {
+        return $this->howMany;
+    }
 
     public function calorie():string
     {

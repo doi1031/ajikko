@@ -94,7 +94,7 @@
             </div>
 
             <div class="mt-10 border-t border-gray-200 pt-10">
-                <h3 class="text-sm font-medium text-gray-900">材料（**人分）</h3>
+                <h3 class="text-sm font-medium text-gray-900">材料（{{ $recipe->howMany() }}人分）</h3>
                 <div class="prose prose-sm mt-4 text-gray-500">
                     <ul role="list">
                         @foreach($recipe->eiyos as $eiyo)

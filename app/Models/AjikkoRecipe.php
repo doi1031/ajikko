@@ -35,6 +35,7 @@ class AjikkoRecipe extends Model
             $this->title,
             $this->description,
             $this->source_url,
+            $this->how_many,
             $this->food_image_url,
             $this->medium_image_url,
             $this->small_image_url,
