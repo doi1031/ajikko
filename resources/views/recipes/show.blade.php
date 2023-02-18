@@ -118,15 +118,15 @@
                     </tr>
                     <tr>
                     <td>P…</td>
-                    <td>-</td>
+                    <td>{{ $recipe->prot() }}</td>
                     </tr>
                     <tr>
                     <td>F…</td>
-                    <td>-</td>
+                    <td>{{ $recipe->fat() }}</td>
                     </tr>
                     <tr>
                     <td>C…</td>
-                    <td>-</td>
+                    <td>{{ $recipe->carbo() }}</td>
                     </tr>
                 </tbody>
                 </table>

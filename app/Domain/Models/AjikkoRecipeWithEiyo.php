@@ -33,6 +33,27 @@ class AjikkoRecipeWithEiyo
         });
     }
 
+    public function prot():string
+    {
+        return (string)$this->eiyos->sum(function(AjikkoRecipeEiyo $eiyo){
+            return $eiyo->prot();
+        });
+    }
+
+    public function fat():string
+    {
+        return (string)$this->eiyos->sum(function(AjikkoRecipeEiyo $eiyo){
+            return $eiyo->fat();
+        });
+    }
+
+    public function carbo():string
+    {
+        return (string)$this->eiyos->sum(function(AjikkoRecipeEiyo $eiyo){
+            return $eiyo->carbo();
+        });
+    }
+
     public function salt():string
     {
         return (string)$this->eiyos->sum(function(AjikkoRecipeEiyo $eiyo){

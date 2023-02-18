@@ -27,6 +27,9 @@ class AjikkoRecipe extends Model
                 $eiyo->eiyo->food_name,
                 $eiyo->volume,
                 $eiyo->eiyo->enerc_kcal,
+                (float)$eiyo->eiyo->prot,                
+                (float)$eiyo->eiyo->fat,                
+                (float)$eiyo->eiyo->choavlm,                
                 $eiyo->eiyo->nacl_eq,
             );
         });
