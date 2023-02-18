@@ -17,27 +17,40 @@ class AjikkoRecipeEiyo
 
     public function prot()
     {
-        return $this->prot * ($this->volume / 100);
+        $value = $this->prot * ($this->volume / 100);
+        $formatted_number = sprintf("%.0f" , $value);
+        return $formatted_number;
     }
 
     public function fat()
     {
-        return $this->fat * ($this->volume / 100);
+        $value = $this->fat * ($this->volume / 100);
+        $formatted_number = sprintf("%.0f" , $value);
+        return $formatted_number;
+
     }
 
     public function carbo()
     {
-        return $this->carbo * ($this->volume / 100);
+        $value = $this->carbo * ($this->volume / 100);
+        $formatted_number = sprintf("%.0f" , $value);
+        return $formatted_number;
+
     }
 
     public function calorie()
     {
-        return $this->enercKcal * ($this->volume / 100);
+        $value = $this->enercKcal * ($this->volume / 100);
+        $formatted_number = sprintf("%.0f" , $value);
+        return $formatted_number;
+
     }
 
     public function salt()
     {
-        return $this->naclEq * ($this->volume / 100);
+        $value = $this->naclEq * ($this->volume / 100);
+        $formatted_number = sprintf("%.0f" , $value);
+        return $formatted_number;
     }
 
 }
