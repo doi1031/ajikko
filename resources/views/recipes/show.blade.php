@@ -54,36 +54,47 @@
                             <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
                         </svg>
                     </div>
-                    <p class="sr-only">4 out of 5 stars</p>
                 </div>
             </div>
+            <br>
 
+            <h3 class="text-sm font-medium text-gray-900">1人分あたり</h3>
             <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
+
                 <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
-                    <dt class="truncate text-sm font-medium text-gray-500">Calorie</dt>
+                    <dt class="truncate text-sm font-medium text-gray-500">P</dt>
+                    <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">-</dd>
+                </div>
+
+                <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+                    <dt class="truncate text-sm font-medium text-gray-500">F</dt>
+                    <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">-</dd>
+                </div>
+
+                <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+                    <dt class="truncate text-sm font-medium text-gray-500">C</dt>
+                    <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">-</dd>
+                </div>
+
+                <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+                    <dt class="truncate text-sm font-medium text-gray-500">kcal</dt>
                     <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{{ $recipe->calorie() }}</dd>
                 </div>
 
                 <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
-                    <dt class="truncate text-sm font-medium text-gray-500">Salt</dt>
+                    <dt class="truncate text-sm font-medium text-gray-500">塩分</dt>
                     <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{{ $recipe->salt() }}</dd>
                 </div>
 
-                <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
-                    <dt class="truncate text-sm font-medium text-gray-500">-</dt>
-                    <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">-</dd>
-                </div>
             </dl>
 
-            <p class="mt-6 text-gray-500">{{ $recipe->description }}</p>
-
-            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
-                <a target="_blank" href="{{ $recipe->sourceUrl }}"><button type="button" class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">楽天レシピ</button></a>
-                <button type="button" class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-50 py-3 px-8 text-base font-medium text-indigo-700 hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">Preview</button>
+            <div class="mt-10 border-t border-gray-200 pt-10">
+                <h3 class="text-sm font-medium text-gray-900">概要・作り方</h3>
+                <p  class="prose prose-sm mt-4 text-gray-500">{{ $recipe->description }}</p>
             </div>
 
             <div class="mt-10 border-t border-gray-200 pt-10">
-                <h3 class="text-sm font-medium text-gray-900">材料</h3>
+                <h3 class="text-sm font-medium text-gray-900">材料（**人分）</h3>
                 <div class="prose prose-sm mt-4 text-gray-500">
                     <ul role="list">
                         @foreach($recipe->eiyos as $eiyo)
@@ -91,6 +102,37 @@
                         @endforeach
                     </ul>
                 </div>
+            </div>
+            <br>
+
+            <h3 class="text-sm font-medium text-gray-900">合計</h3>
+            <table class="prose prose-sm mt-4 text-gray-500">
+                <tbody>
+                    <tr>
+                    <td>kcal…</td>
+                    <td>{{ $recipe->calorie() }}</td>
+                    </tr>
+                    <tr>
+                    <td>塩分…</td>
+                    <td>{{ $recipe->salt() }}</td>
+                    </tr>
+                    <tr>
+                    <td>P…</td>
+                    <td>-</td>
+                    </tr>
+                    <tr>
+                    <td>F…</td>
+                    <td>-</td>
+                    </tr>
+                    <tr>
+                    <td>C…</td>
+                    <td>-</td>
+                    </tr>
+                </tbody>
+                </table>
+
+            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
+                <a target="_blank" href="{{ $recipe->sourceUrl }}"><button type="button" class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">参照元URL</button></a>
             </div>
 
             <div class="mt-10 border-t border-gray-200 pt-10">
