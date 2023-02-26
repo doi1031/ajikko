@@ -21,7 +21,7 @@
                     <p class="mt-2 text-sm text-gray-500">登録日：<time datetime="{{ $recipe->updatedAt }}">{{ $recipe->updatedAt }}</time></p>
                 </div>
 
-            <h3 class="text-sm font-medium text-gray-900">1人分あたり</h3>
+            <h3 class="text-sm font-medium text-gray-900">1人分あたりのカロリー、PFC、塩分</h3>
             <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
 
                 <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
