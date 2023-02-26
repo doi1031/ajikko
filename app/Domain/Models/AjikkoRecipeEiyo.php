@@ -15,6 +15,13 @@ class AjikkoRecipeEiyo
         public string $naclEq,
     ) {}
 
+    public function volume()
+    {
+        $value = $this->volume;
+        $formatted_number = sprintf("%.0f" , $value);
+        return $formatted_number;
+    }
+
     public function prot()
     {
         $value = $this->prot * ($this->volume / 100);

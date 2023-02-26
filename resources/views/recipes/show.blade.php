@@ -98,7 +98,7 @@
                 <div class="prose prose-sm mt-4 text-gray-500">
                     <ul role="list">
                         @foreach($recipe->eiyos as $eiyo)
-                            <li>{{ $eiyo->name }} {{ $eiyo->calorie() }}kcal</li>
+                            <li>{{ $eiyo->name }} …{{ $eiyo->volume() }}g（ {{ $eiyo->calorie() }}kcal / p{{ $eiyo->prot() }}f{{ $eiyo->fat() }}c{{ $eiyo->carbo() }} ）</li>
                         @endforeach
                     </ul>
                 </div>
