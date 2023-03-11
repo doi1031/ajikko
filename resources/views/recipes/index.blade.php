@@ -20,7 +20,6 @@
                                     {{ $recipe->title }}
                                 </a>
                             </h3>
-                            <p class="text-sm text-gray-500">{{ $recipe->description }}</p>
                             <div class="flex flex-1 flex-col justify-end">
 {{--                                <p class="text-sm italic text-gray-500">8 colors</p>--}}
                                 <p class="text-base font-medium text-gray-900">{{ $recipe->calorie() / $recipe->howMany()  }}kcal / p{{ $recipe->prot() / $recipe->howMany() }} - f{{ $recipe->fat() / $recipe->howMany()  }} - c{{ $recipe->carbo() / $recipe->howMany()  }}
