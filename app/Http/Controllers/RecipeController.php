@@ -43,6 +43,15 @@ class RecipeController extends Controller
      */
     public function create()
     {
+        $username = 'pfc';
+        $password = 'pfc';
+        if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW']) ||
+            $_SERVER['PHP_AUTH_USER'] != $username || $_SERVER['PHP_AUTH_PW'] != $password) {
+            header('WWW-Authenticate: Basic realm="Restricted Area"');
+            header('HTTP/1.0 401 Unauthorized');
+            echo 'このページにアクセスするにはログインが必要です。';
+            exit;
+        }
         // 日常的に使う食材に検索対象を限定しておく処理
 
         $eiyos = Eiyo::query()
