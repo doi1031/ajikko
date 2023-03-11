@@ -54,12 +54,12 @@
 
             <div class="mt-10 border-t border-gray-200 pt-10">
                 <h3 class="text-sm font-medium text-gray-900">概要・作り方</h3>
-                <p  class="mt-4 text-gray-500">{{ $recipe->description }}</p>
+                <p  class="prose-sm mt-4 text-gray-500">{{ $recipe->description }}</p>
             </div>
 
             <div class="mt-10 border-t border-gray-200 pt-10">
                 <h3 class="text-sm font-medium text-gray-900">材料（{{ $recipe->howMany() }}人分）</h3>
-                <div class="mt-4 text-gray-500">
+                <div class="prose prose-sm mt-4 text-gray-500">
                     <ul role="list">
                         @foreach($recipe->eiyos as $eiyo)
                             <li>{{ $eiyo->name }} …{{ $eiyo->volume() }}g（ {{ $eiyo->calorie() }}kcal / p{{ $eiyo->prot() }} - f{{ $eiyo->fat() }} - c{{ $eiyo->carbo() }} ）</li>
@@ -70,7 +70,7 @@
             <br>
 
             <h3 class="text-sm font-medium text-gray-900">合計</h3>
-            <table class="mt-4 text-gray-500">
+            <table class="prose prose-sm mt-4 text-gray-500">
                 <tbody>
                     <tr>
                     <td>kcal…</td>
