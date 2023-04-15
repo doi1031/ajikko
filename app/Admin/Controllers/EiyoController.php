@@ -25,6 +25,7 @@ class EiyoController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new Eiyo());
+        $grid->model()->where('active_flg', true);
 
         $grid->column('id', __('Id'));
         $grid->column('active_flg', __('Active flg'));
