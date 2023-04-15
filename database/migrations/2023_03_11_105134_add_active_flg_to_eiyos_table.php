@@ -13,10 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('eiyos', function (Blueprint $table) {
-            $table->boolean('active_flg',)
-                ->default(false)
-                ->after('id');
+        Schema::table('ajikko_recipe_eiyos', function (Blueprint $table) {
+            $table->id();
         });
     }
 

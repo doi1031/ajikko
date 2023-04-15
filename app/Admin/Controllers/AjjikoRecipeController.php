@@ -30,10 +30,17 @@ class AjjikoRecipeController extends AdminController
         $grid->column('title', __('Title'));
         $grid->column('description', __('Description'));
         $grid->column('how_many', __('How many'));
-        $grid->column('source_url', __('Source url'));
         $grid->column('food_image_url', __('Food image url'));
         $grid->column('medium_image_url', __('Medium image url'));
         $grid->column('small_image_url', __('Small image url'));
+
+        $grid->column('eiyos', __('食材'))->display(function ($eiyos) {
+            $eiyos = $this->eiyos->map(function($eiyo){
+                return $eiyo->eiyo->food_name;
+            });
+            return $eiyos;
+        })->label();
+
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
         $grid->column('deleted_at', __('Deleted at'));
@@ -82,6 +89,12 @@ class AjjikoRecipeController extends AdminController
         $form->text('food_image_url', __('Food image url'));
         $form->text('medium_image_url', __('Medium image url'));
         $form->text('small_image_url', __('Small image url'));
+
+        $form->hasMany('eiyos', '食材', function (Form\NestedForm $form) {
+            $form->select('eiyo_id', __('食材'))
+                ->options(\App\Models\Eiyo::where('active_flg', 1)->pluck('food_name', 'id'));
+            $form->decimal('volume', __('量'));
+        })->useTable();
 
         return $form;
     }

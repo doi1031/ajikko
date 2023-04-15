@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('eiyo_id');
             $table->unsignedSmallInteger('volume');
 
+            $table->id();
             $table->foreign('ajikko_recipe_id')
                 ->references('id')
                 ->on('ajikko_recipes');
