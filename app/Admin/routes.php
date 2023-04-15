@@ -2,6 +2,7 @@
 
 use Illuminate\Routing\Router;
 use App\Admin\Controllers\EiyoController;
+use App\Admin\Controllers\AjjikoRecipeController;
 
 Admin::routes();
 
@@ -14,5 +15,6 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('home');
     $router->resource('eiyos', EiyoController::class);
+    $router->resource('ajikko-recipes', AjjikoRecipeController::class);
 
 });
