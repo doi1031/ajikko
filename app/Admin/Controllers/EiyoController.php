@@ -32,51 +32,11 @@ class EiyoController extends AdminController
         $grid->column('food_name', __('Food name'));
         $grid->column('enerc_kcal', __('Enerc kcal'));
         $grid->column('prot', __('Prot'));
-        $grid->column('chole', __('Chole'));
         $grid->column('fat', __('Fat'));
         $grid->column('choavlm', __('Choavlm'));
         $grid->column('fib', __('Fib'));
-        $grid->column('oa', __('Oa'));
-        $grid->column('ash', __('Ash'));
-        $grid->column('na', __('Na'));
-        $grid->column('k', __('K'));
-        $grid->column('ca', __('Ca'));
-        $grid->column('mg', __('Mg'));
-        $grid->column('p', __('P'));
-        $grid->column('fe', __('Fe'));
-        $grid->column('zn', __('Zn'));
-        $grid->column('cu', __('Cu'));
-        $grid->column('mn', __('Mn'));
-        $grid->column('se', __('Se'));
-        $grid->column('cr', __('Cr'));
-        $grid->column('mo', __('Mo'));
-        $grid->column('retol', __('Retol'));
-        $grid->column('carta', __('Carta'));
-        $grid->column('cartb', __('Cartb'));
-        $grid->column('crypxb', __('Crypxb'));
-        $grid->column('cartbeq', __('Cartbeq'));
-        $grid->column('vita_rae', __('Vita rae'));
-        $grid->column('vitd', __('Vitd'));
-        $grid->column('tocpha', __('Tocpha'));
-        $grid->column('tocphb', __('Tocphb'));
-        $grid->column('tocphg', __('Tocphg'));
-        $grid->column('tocphd', __('Tocphd'));
-        $grid->column('vitk', __('Vitk'));
-        $grid->column('thia', __('Thia'));
-        $grid->column('ribf', __('Ribf'));
-        $grid->column('nia', __('Nia'));
-        $grid->column('ne', __('Ne'));
-        $grid->column('vitb6a', __('Vitb6a'));
-        $grid->column('vitb12', __('Vitb12'));
-        $grid->column('fol', __('Fol'));
-        $grid->column('pantac', __('Pantac'));
-        $grid->column('biot', __('Biot'));
-        $grid->column('vitc', __('Vitc'));
-        $grid->column('alc', __('Alc'));
         $grid->column('nacl_eq', __('Nacl eq'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
-
+     
         return $grid;
     }
 
