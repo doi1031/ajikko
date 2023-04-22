@@ -11,7 +11,7 @@ class RecipeController extends Controller
 {
     public function index(Request $request)
     {  
-    $sort = $request->input('sort');
+    $sort = $request->input('sort', 'low_fat');
 
     $recipes = AjikkoRecipe::all()->map(function (AjikkoRecipe $ajikkoRecipe) {
         return $ajikkoRecipe->toDomain();
