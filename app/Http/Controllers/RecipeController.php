@@ -41,6 +41,7 @@ class RecipeController extends Controller
     ];
 
     return view('recipes/index', $params);
+
     }
 
 
