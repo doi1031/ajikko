@@ -5,37 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\AjikkoRecipeEiyo;
 use App\Models\Eiyo;
 use App\Models\AjikkoRecipe;
+use Illuminate\Http\Request;
 
 class RecipeController extends Controller
 {
-    public function index(Request $request)
-{
-    $sort = $request->input('sort');
-    $query = AjikkoRecipe::query();
-
-    switch ($sort) {
-        case 'low_fat':
-            $query->orderBy('fat', 'asc');
-            break;
-        case 'high_protein':
-            $query->orderBy('prot', 'desc');
-            break;
-        case 'newest':
-            $query->orderBy('created_at', 'desc');
-            break;
+    public function index()
+    {
+        $recipes = AjikkoRecipe::all()->map(function (AjikkoRecipe $ajikkoRecipe) {
+            return $ajikkoRecipe->toDomain();
+        });
+        $params = [
+            'recipes' => $recipes,
+        ];
+        return view('recipes/index', $params);
     }
-
-    $ajikkoRecipes = $query->get();
-    $recipes = $ajikkoRecipes->map(function (AjikkoRecipe $ajikkoRecipe) {
-        return $ajikkoRecipe->toDomain();
-    });
-
-    $params = [
-        'recipes' => $recipes,
-    ];
-
-    return view('recipes/index', $params);
-}
 
 
     public function show($id)
